@@ -1,5 +1,6 @@
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Data
 {
@@ -11,5 +12,6 @@ namespace API.Data
         }
 
         public DbSet<Product> Products { get; set; }
+
     }
 }

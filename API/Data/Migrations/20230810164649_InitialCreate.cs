@@ -22,7 +22,8 @@ namespace API.Data.Migrations
                     PictureUrl = table.Column<string>(type: "TEXT", nullable: true),
                     Type = table.Column<string>(type: "TEXT", nullable: true),
                     Brand = table.Column<string>(type: "TEXT", nullable: true),
-                    QuantityInStock = table.Column<int>(type: "INTEGER", nullable: false)
+                    QuantityInStock = table.Column<int>(type: "INTEGER", nullable: false),
+                    Tag = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
