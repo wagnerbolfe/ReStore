@@ -1,10 +1,11 @@
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { RegularText, TitleText } from "../../../../components/Typography";
 import { ProductCardContainer, Tags, Name, Description, CardFooter, AddCartWrapper } from "./styles";
-import { ShoppingCart } from "phosphor-react";
+import { Info, ShoppingCart } from "@phosphor-icons/react";
 import { useState } from "react";
 import { useCart } from "../../../../hooks/useCart";
 import { formatMoney } from "../../../../utils/formatMoney";
+import { NavLink } from "react-router-dom";
 
 export interface Product {
   id: number;
@@ -48,6 +49,11 @@ export function ProductCard({ product }: ProductProps) {
   return (
     <ProductCardContainer>
       <img src={`/products/${product.pictureUrl}`} />
+
+      <NavLink to={`/product/${product.id}`} title="Detalhes do produto">
+        <Info size={30} className="icon-card" />
+      </NavLink>
+
       <Tags>
         <span key={`${product.id}${product.tag}`}>{product.tag}</span>
       </Tags>

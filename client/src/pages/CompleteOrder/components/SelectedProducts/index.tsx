@@ -10,7 +10,7 @@ export function SelectedProducts() {
   return (
     <SelectedProductsContainer>
       <TitleText size="xs" color="subtitle">
-        Cafés selecionados
+        Produtos selecionados
       </TitleText>
 
       <DetailsContainer>

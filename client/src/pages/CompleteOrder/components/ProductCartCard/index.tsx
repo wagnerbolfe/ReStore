@@ -1,7 +1,7 @@
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { RegularText } from "../../../../components/Typography";
 import { ActionsContainer, ProductCartCardContainer, RemoveButton } from "./styles";
-import { Trash } from "phosphor-react";
+import { Trash } from "@phosphor-icons/react";
 import { CartItem } from "../../../../contexts/CartContext";
 import { useCart } from "../../../../hooks/useCart";
 import { formatMoney } from "../../../../utils/formatMoney";

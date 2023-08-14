@@ -1,5 +1,5 @@
 import { QuantityInputContainer, IconWrapper } from "./styles";
-import { Minus, Plus } from "phosphor-react";
+import { Minus, Plus } from "@phosphor-icons/react";
 
 interface QuantityInputProps {
   size?: "medium" | "small";

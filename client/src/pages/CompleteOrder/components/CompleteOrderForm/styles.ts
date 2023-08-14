@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { SectionBaseStyle } from "../../styles";
 
 export const CompleteOrderFormContainer = styled.div`
@@ -38,8 +38,8 @@ export const AddressFormContainer = styled.div`
 
 export const PaymentMethodOptionsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
 
   > p {
     grid-column: span 3;

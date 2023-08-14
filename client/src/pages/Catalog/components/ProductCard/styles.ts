@@ -20,6 +20,14 @@ export const ProductCardContainer = styled.div`
     height: 7.5rem;
     margin-top: -1.25rem;
   }
+
+  .icon-card {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: ${({ theme }) => theme.colors["brand-purple-dark"]};
+  }
+
 `;
 
 export const Tags = styled.div`

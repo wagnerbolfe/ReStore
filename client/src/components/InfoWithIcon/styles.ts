@@ -7,7 +7,7 @@ export const InfoWithIconContainer = styled.div`
 `;
 
 interface IconsContainerProps {
-  iconBg: string;
+  iconbg: string;
 }
 
 export const IconContainer = styled.div<IconsContainerProps>`
@@ -15,7 +15,7 @@ export const IconContainer = styled.div<IconsContainerProps>`
   height: 2rem;
   border-radius: 50%;
 
-  background: ${({ iconBg }) => iconBg};
+  background: linear-gradient(135deg, rgba(32,194,255,1) 0%, rgba(170,22,255,1) 100%);
   color: ${({ theme }) => theme.colors["base-white"]};
 
   display: flex;

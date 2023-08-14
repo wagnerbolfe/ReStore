@@ -1,19 +1,20 @@
 import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
-import { Router } from "./Routes";
-import { BrowserRouter } from "react-router-dom";
 import { CartContextProvider } from "./contexts/CartContext";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Routes";
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
+      <ToastContainer position="bottom-right" theme="colored" autoClose={3000} />
       <GlobalStyle />
-      <BrowserRouter>
-        <CartContextProvider>
-          <Router />
-        </CartContextProvider>
-      </BrowserRouter>
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
     </ThemeProvider>
   );
 }

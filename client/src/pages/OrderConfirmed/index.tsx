@@ -3,7 +3,7 @@ import { OrderConfirmedContainer, OrderDetailsContainer } from "./styles";
 import confirmedOrderIllustration from "../../assets/confirmed-order.svg";
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { useTheme } from "styled-components";
-import { MapPin, Clock, CurrencyDollar } from "phosphor-react";
+import { MapPin, Clock, CurrencyDollar } from "@phosphor-icons/react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { OrderData } from "../CompleteOrder";
 import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions";
@@ -41,7 +41,7 @@ export function OrderConfirmedPage() {
         <OrderDetailsContainer>
           <InfoWithIcon
             icon={<MapPin weight="fill" />}
-            iconBg={colors["brand-purple"]}
+            iconbg={colors["brand-purple"]}
             text={
               <RegularText>
                 Entrega em <strong>{state.street}</strong>, {state.number}
@@ -53,7 +53,7 @@ export function OrderConfirmedPage() {
 
           <InfoWithIcon
             icon={<Clock weight="fill" />}
-            iconBg={colors["brand-yellow"]}
+            iconbg={colors["brand-yellow"]}
             text={
               <RegularText>
                 Previsão de entrega
@@ -65,7 +65,7 @@ export function OrderConfirmedPage() {
 
           <InfoWithIcon
             icon={<CurrencyDollar weight="fill" />}
-            iconBg={colors["brand-yellow-dark"]}
+            iconbg={colors["brand-yellow-dark"]}
             text={
               <RegularText>
                 Pagamento na entrega
