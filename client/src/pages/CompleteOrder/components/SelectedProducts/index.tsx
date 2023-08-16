@@ -1,11 +1,11 @@
-import { useCart } from "../../../../hooks/useCart";
 import { TitleText } from "../../../../components/Typography";
 import { ProductCartCard } from "../ProductCartCard";
 import { ConfirmationSection } from "./ConfirmationSection";
 import { DetailsContainer, SelectedProductsContainer } from "./styles";
+import { useAppSelector } from "../../../../store/configureStore";
 
 export function SelectedProducts() {
-  const { cartItems } = useCart();
+  const { basket } = useAppSelector(state => state.basket);
 
   return (
     <SelectedProductsContainer>
@@ -14,8 +14,8 @@ export function SelectedProducts() {
       </TitleText>
 
       <DetailsContainer>
-        {cartItems.map((item) => (
-          <ProductCartCard key={item.id} product={item} />
+        {basket?.items.map((item) => (
+          <ProductCartCard key={item.productId} product={item} />
         ))}
 
         <ConfirmationSection />

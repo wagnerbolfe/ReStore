@@ -27,6 +27,10 @@ export const IntroContent = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 3.5rem;
+
+  img {
+    width: 40%;
+  }
 `;
 
 export const IntroTitle = styled(TitleText)`

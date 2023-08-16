@@ -3,9 +3,12 @@ import { RegularText, TitleText } from "../../../../components/Typography";
 import { ProductCardContainer, Tags, Name, Description, CardFooter, AddCartWrapper } from "./styles";
 import { Info, ShoppingCart } from "@phosphor-icons/react";
 import { useState } from "react";
-import { useCart } from "../../../../hooks/useCart";
 import { formatMoney } from "../../../../utils/formatMoney";
 import { NavLink } from "react-router-dom";
+import agent from "../../../../api/agent";
+import { Hypnosis } from "react-cssfx-loading";
+import { useAppDispatch } from "../../../../store/configureStore";
+import { setBasket } from "../../../CompleteOrder/basketSlice";
 
 export interface Product {
   id: number;
@@ -24,7 +27,9 @@ interface ProductProps {
 }
 
 export function ProductCard({ product }: ProductProps) {
+  const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useAppDispatch();
 
   function handleIncrease() {
     setQuantity((state) => state + 1);
@@ -34,14 +39,20 @@ export function ProductCard({ product }: ProductProps) {
     setQuantity((state) => state - 1);
   }
 
-  const { addProductToCart } = useCart();
-
   function handleAddToCart() {
     const productToAdd = {
       ...product,
       quantity,
     };
-    addProductToCart(productToAdd);
+    handleAddItem(productToAdd.id, quantity);
+  }
+
+  function handleAddItem(productId: number, quantity: number) {
+    setLoading(true)
+    agent.Basket.addItem(productId, quantity)
+      .then(basket => dispatch(setBasket(basket)))
+      .catch(error => console.log(error))
+      .finally(() => setLoading(false))
   }
 
   const formattedPrice = formatMoney(product.price);
@@ -76,7 +87,7 @@ export function ProductCard({ product }: ProductProps) {
             quantity={quantity}
           />
           <button onClick={handleAddToCart}>
-            <ShoppingCart weight="fill" size={22} />
+            {loading ? <Hypnosis width={20} height={20} color="#fff" /> : <ShoppingCart weight="fill" size={22} />}
           </button>
         </AddCartWrapper>
       </CardFooter>

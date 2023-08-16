@@ -4,14 +4,14 @@ import { HomePage } from "./pages/Catalog";
 import { OrderConfirmedPage } from "./pages/OrderConfirmed";
 import AboutPage from "./pages/AboutPage";
 import ServerError from "./pages/ServerError";
-import { DefaultLayout } from "./layouts/DefaultLayout";
 import ProductDetails from "./pages/Catalog/components/ProductDetails";
 import NotFound from "./pages/NotFound";
+import App from "./App";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <DefaultLayout />,
+    element: <App />,
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },

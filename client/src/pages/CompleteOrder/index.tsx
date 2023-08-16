@@ -5,7 +5,23 @@ import { useForm, FormProvider } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../hooks/useCart";
+
+export interface Basket {
+  id: number;
+  buyerId: string;
+  items: BasketItem[];
+}
+
+export interface BasketItem {
+  productId: number;
+  name: string;
+  price: number;
+  pictureUrl: string;
+  brand: string;
+  type: string;
+  quantity: number;
+  tag: string;
+}
 
 enum PaymentMethods {
   stripe = "stripe",
@@ -32,6 +48,7 @@ export type OrderData = zod.infer<typeof confirmOrderFormValidationSchema>;
 type ConfirmOrderFormData = OrderData;
 
 export function CompleteOrderPage() {
+
   const confirmOrderForm = useForm<ConfirmOrderFormData>({
     resolver: zodResolver(confirmOrderFormValidationSchema),
     defaultValues: {
@@ -42,13 +59,9 @@ export function CompleteOrderPage() {
   const { handleSubmit } = confirmOrderForm;
 
   const navigate = useNavigate();
-  const { cleanCart } = useCart();
 
   function handleConfirmOrder(data: ConfirmOrderFormData) {
-    navigate("/orderConfirmed", {
-      state: data,
-    });
-    cleanCart();
+    { data.paymentMethod == "stripe" ? navigate("/orderConfirmed", { state: data }) : navigate("/orderConfirmed", { state: data }) }
   }
 
   return (

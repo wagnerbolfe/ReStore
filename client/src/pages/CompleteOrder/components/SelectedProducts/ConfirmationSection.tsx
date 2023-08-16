@@ -1,17 +1,19 @@
 import { ConfirmationSectionContainer } from "./styles";
 import { RegularText } from "../../../../components/Typography";
 import { Button } from "../../../../components/Button";
-import { useCart } from "../../../../hooks/useCart";
 import { formatMoney } from "../../../../utils/formatMoney";
+import { useAppSelector } from "../../../../store/configureStore";
 
-const DELIVERY_PRICE = 3.5;
+const DELIVERY_PRICE = 25;
 
 export function ConfirmationSection() {
-  const { cartItemsTotal, cartQuantity } = useCart();
-  const cartTotal = DELIVERY_PRICE + cartItemsTotal;
+  const { basket } = useAppSelector(state => state.basket);
+  const subTotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
+  const cartTotal = DELIVERY_PRICE + subTotal!;
 
-  const formattedItemsTotal = formatMoney(cartItemsTotal);
-  const formattedCartTotal = formatMoney(cartTotal);
+  const formattedItemsTotal = formatMoney(subTotal || 0);
+  const formattedCartTotal = formatMoney(cartTotal || 0);
   const formattedDeliveryPrice = formatMoney(DELIVERY_PRICE);
 
   return (
@@ -35,7 +37,7 @@ export function ConfirmationSection() {
 
       <Button
         text="Confirmar Pedido"
-        disabled={cartQuantity <= 0}
+        disabled={itemCount! <= 0}
         type="submit"
       />
     </ConfirmationSectionContainer>

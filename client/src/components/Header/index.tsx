@@ -2,10 +2,11 @@ import { HeaderButton, HeaderButtonsContainer, HeaderContainer } from "./styles"
 import LogoImg from "../../assets/logo.png";
 import { Info, Key, ShoppingCart, UserPlus } from "@phosphor-icons/react";
 import { NavLink } from "react-router-dom";
-import { useCart } from "../../hooks/useCart";
+import { useAppSelector } from "../../store/configureStore";
 
 export function Header() {
-  const { cartQuantity } = useCart();
+  const { basket } = useAppSelector(state => state.basket)
+  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <HeaderContainer>
@@ -38,7 +39,7 @@ export function Header() {
 
           <NavLink to="/completeOrder">
             <HeaderButton variant="yellow">
-              {cartQuantity >= 1 && <span>{cartQuantity}</span>}
+              {itemCount! >= 1 && <span>{itemCount}</span>}
               <ShoppingCart size={20} weight="fill" />
             </HeaderButton>
           </NavLink>
