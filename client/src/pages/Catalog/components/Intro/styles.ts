@@ -5,7 +5,7 @@ import { rgba } from "polished";
 
 export const IntroContainer = styled.section`
   width: 100%;
-  height: 34rem;
+  height: 35rem;
 
   background: ${({ theme }) => `url(${introBackgroundImg}) no-repeat center,
       linear-gradient(
@@ -29,7 +29,7 @@ export const IntroContent = styled.div`
   gap: 3.5rem;
 
   img {
-    width: 40%;
+    width: 30%;
   }
 `;
 

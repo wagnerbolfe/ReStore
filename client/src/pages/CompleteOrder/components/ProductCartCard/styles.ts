@@ -22,9 +22,16 @@ export const ProductCartCardContainer = styled.div`
   }
 
   > p {
-    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
     font-weight: 700;
   }
+`;
+
+export const ProductInfoContainer = styled.div`
+  width: 270px
 `;
 
 export const ActionsContainer = styled.div`

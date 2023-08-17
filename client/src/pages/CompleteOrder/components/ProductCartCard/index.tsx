@@ -1,6 +1,6 @@
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { RegularText } from "../../../../components/Typography";
-import { ActionsContainer, ProductCartCardContainer, RemoveButton } from "./styles";
+import { ActionsContainer, ProductCartCardContainer, ProductInfoContainer, RemoveButton } from "./styles";
 import { Trash } from "@phosphor-icons/react";
 import { formatMoney } from "../../../../utils/formatMoney";
 import { useState } from "react";
@@ -35,11 +35,10 @@ export function ProductCartCard({ product }: ProductCartCardProps) {
   }
 
   return (
-
     <ProductCartCardContainer key={product.productId}>
       <div>
         <img src={`/products/${product.pictureUrl}`} />
-        <div>
+        <ProductInfoContainer>
           <RegularText color="subtitle">{product.name}</RegularText>
           <ActionsContainer>
             <QuantityInput
@@ -49,15 +48,14 @@ export function ProductCartCard({ product }: ProductCartCardProps) {
               size="small"
             />
             <RemoveButton type="button" onClick={() => handleRemoveItem(product.productId, product.quantity)}>
-              {loading ? <Hypnosis width={16} height={16} /> : <Trash size={16} />}
+              <Trash size={16} />
             </RemoveButton>
+            {loading && <Hypnosis width={22} height={22} />}
           </ActionsContainer>
-        </div>
+        </ProductInfoContainer>
       </div>
 
       <p>R$ {formatMoney(product.price * product.quantity)}</p>
     </ProductCartCardContainer>
-
-
   );
 }
