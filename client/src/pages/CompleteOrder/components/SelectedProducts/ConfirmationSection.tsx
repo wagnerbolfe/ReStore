@@ -10,11 +10,11 @@ export function ConfirmationSection() {
   const { basket } = useAppSelector(state => state.basket);
   const subTotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
   const itemCount = basket!.items.reduce((sum, item) => sum + item.quantity, 0);
-  const cartTotal = DELIVERY_PRICE + subTotal!;
+  const formattedDeliveryPrice = itemCount > 5 ? 0 : parseInt(formatMoney(DELIVERY_PRICE));
+  const cartTotal = formattedDeliveryPrice + subTotal!;
 
   const formattedItemsTotal = formatMoney(subTotal || 0);
   const formattedCartTotal = formatMoney(cartTotal || 0);
-  const formattedDeliveryPrice = itemCount > 5 ? formatMoney(DELIVERY_PRICE * 2) : formatMoney(DELIVERY_PRICE);
 
   return (
     <ConfirmationSectionContainer>
@@ -23,7 +23,10 @@ export function ConfirmationSection() {
         <RegularText>R$ {formattedItemsTotal}</RegularText>
       </div>
       <div>
-        <RegularText size="s">Entrega</RegularText>
+        <RegularText size="s">
+          Entrega
+          <RegularText style={{ fontSize: '10px', color: '#ff0000' }} >(Acima de 5un, frete grátis)</RegularText>
+        </RegularText>
         <RegularText>R$ {itemCount ? formattedDeliveryPrice : 0}</RegularText>
       </div>
       <div>
