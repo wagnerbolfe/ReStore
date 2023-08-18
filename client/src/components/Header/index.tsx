@@ -17,28 +17,28 @@ export function Header() {
 
         <HeaderButtonsContainer>
           <NavLink to="/about">
-            <HeaderButton variant="purple">
+            <HeaderButton $variant="purple">
               <Info size={20} weight="fill" />
               Sobre
             </HeaderButton>
           </NavLink>
 
           <NavLink to="/login">
-            <HeaderButton variant="purple">
+            <HeaderButton $variant="purple">
               <Key size={20} weight="fill" />
               Login
             </HeaderButton>
           </NavLink>
 
           <NavLink to="/register">
-            <HeaderButton variant="purple">
+            <HeaderButton $variant="purple">
               <UserPlus size={20} weight="fill" />
               Registrar
             </HeaderButton>
           </NavLink>
 
           <NavLink to="/completeOrder">
-            <HeaderButton variant="yellow">
+            <HeaderButton $variant="yellow">
               {itemCount! >= 1 && <span>{itemCount}</span>}
               <ShoppingCart size={20} weight="fill" />
             </HeaderButton>

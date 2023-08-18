@@ -25,15 +25,15 @@ export function ConfirmationSection() {
       <div>
         <RegularText size="s">
           Entrega
-          <RegularText style={{ fontSize: '10px', color: '#ff0000' }} >(Acima de 5un, frete grátis)</RegularText>
+          <span style={{ fontSize: '10px', color: '#ff0000' }} >(Acima de 5un, frete grátis)</span>
         </RegularText>
         <RegularText>R$ {itemCount ? formattedDeliveryPrice : 0}</RegularText>
       </div>
       <div>
-        <RegularText weight="700" color="subtitle" size="l">
+        <RegularText $weight="700" color="subtitle" size="l">
           Total
         </RegularText>
-        <RegularText weight="700" color="subtitle" size="l">
+        <RegularText $weight="700" color="subtitle" size="l">
           R$ {itemCount ? formattedCartTotal : 0}
         </RegularText>
       </div>

@@ -23,5 +23,10 @@ export const ConfirmationSectionContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    > p {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;

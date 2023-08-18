@@ -31,7 +31,7 @@ export const HeaderButtonsContainer = styled.div`
 `;
 
 interface HeaderButtonProps {
-  variant: "purple" | "yellow";
+  $variant: "purple" | "yellow";
 }
 
 export const HeaderButton = styled.button<HeaderButtonProps>`
@@ -64,20 +64,20 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
 
   font-size: ${({ theme }) => theme.textSizes["text-regular-s"]};
 
-  ${({ variant }) => css`
-    background: ${({ theme }) => theme.colors[`brand-${variant}-light`]};
-    color: ${({ theme }) => theme.colors[`brand-${variant}-dark`]};
+  ${({ $variant }) => css`
+    background: ${({ theme }) => theme.colors[`brand-${$variant}-light`]};
+    color: ${({ theme }) => theme.colors[`brand-${$variant}-dark`]};
 
     span {
-      background: ${({ theme }) => theme.colors[`brand-${variant}-dark`]};
+      background: ${({ theme }) => theme.colors[`brand-${$variant}-dark`]};
     }
   `}
 
-  ${({ variant }) =>
-    variant === "purple" &&
+  ${({ $variant }) =>
+    $variant === "purple" &&
     css`
       svg {
-        color: ${({ theme }) => theme.colors[`brand-${variant}`]};
+        color: ${({ theme }) => theme.colors[`brand-${$variant}`]};
       }
     `}
 `;

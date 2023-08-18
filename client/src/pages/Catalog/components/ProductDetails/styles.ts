@@ -5,7 +5,8 @@ import { rgba } from "polished";
 
 export const ProductDetailsContainer = styled.section`
   width: 100%;
-  height: 40rem;
+  height: 50rem;
+  margin-top: 3rem;
 
   background: ${({ theme }) => `url(${introBackgroundImg}) no-repeat center,
       linear-gradient(
@@ -16,9 +17,6 @@ export const ProductDetailsContainer = styled.section`
       )`};
   background-size: cover;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const ProductContent = styled.div`

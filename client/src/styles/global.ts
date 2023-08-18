@@ -34,12 +34,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-
   ::-webkit-scrollbar {
-    width: 0.4rem;
+    width: 0;
   }
 
   ::-webkit-scrollbar-track {
