@@ -52,6 +52,20 @@ export const ProductDetailsInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 1.25rem;
+  column-gap: 1.25rem;
   margin-top: 4.125rem;
 
+`;
+
+export const ProductEachDetail = styled.div`
+  padding: 1rem;
+  border-radius: 6px 36px 6px 36px;
+
+  background: ${({ theme }) => `url(${introBackgroundImg}) no-repeat center,
+      linear-gradient(
+        0deg,
+        ${theme.colors["base-white"]} 0%,
+        ${rgba(theme.colors["base-background"], 0.2)} 50%,
+        ${theme.colors["base-background"]} 100%
+      )`};
 `;

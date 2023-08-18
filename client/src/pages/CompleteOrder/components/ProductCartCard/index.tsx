@@ -3,36 +3,18 @@ import { RegularText } from "../../../../components/Typography";
 import { ActionsContainer, ProductCartCardContainer, ProductInfoContainer, RemoveButton } from "./styles";
 import { Trash } from "@phosphor-icons/react";
 import { formatMoney } from "../../../../utils/formatMoney";
-import { useState } from "react";
-import agent from "../../../../api/agent";
 import { Hypnosis } from "react-cssfx-loading";
-import { useAppDispatch } from "../../../../store/configureStore";
-import { removeItem, setBasket } from "../../basketSlice";
+import { useAppDispatch, useAppSelector } from "../../../../store/configureStore";
 import { BasketItem } from "../..";
+import { addBasketItemAsync, removeBasketItemAsync } from "../../basketSlice";
 
 interface ProductCartCardProps {
   product: BasketItem;
 }
 
 export function ProductCartCard({ product }: ProductCartCardProps) {
+  const { status } = useAppSelector(state => state.basket);
   const dispatch = useAppDispatch();
-  const [loading, setLoading] = useState(false);
-
-  function handleAddItem(productId: number) {
-    setLoading(true)
-    agent.Basket.addItem(productId)
-      .then(basket => dispatch(setBasket(basket)))
-      .catch(error => console.log(error))
-      .finally(() => setLoading(false))
-  }
-
-  function handleRemoveItem(productId: number, quantity = 1) {
-    setLoading(true)
-    agent.Basket.removeItem(productId, quantity)
-      .then(() => dispatch(removeItem({ productId, quantity })))
-      .catch(error => console.log(error))
-      .finally(() => setLoading(false))
-  }
 
   return (
     <ProductCartCardContainer key={product.productId}>
@@ -42,15 +24,23 @@ export function ProductCartCard({ product }: ProductCartCardProps) {
           <RegularText color="subtitle">{product.name}</RegularText>
           <ActionsContainer>
             <QuantityInput
-              onIncrease={() => handleAddItem(product.productId)}
-              onDecrease={() => handleRemoveItem(product.productId)}
+              onIncrease={() => dispatch(addBasketItemAsync({ productId: product.productId }))}
+              onDecrease={() => dispatch(removeBasketItemAsync({ productId: product.productId, quantity: 1, name: 'rem' }))}
               quantity={product.quantity}
               size="small"
             />
-            <RemoveButton type="button" onClick={() => handleRemoveItem(product.productId, product.quantity)}>
+            <RemoveButton
+              type="button"
+              onClick={() => dispatch(removeBasketItemAsync({
+                productId: product.productId,
+                quantity: product.quantity,
+                name: 'del'
+              }))}>
               <Trash size={16} />
             </RemoveButton>
-            {loading && <Hypnosis width={22} height={22} />}
+            {status === 'pendingAddItem' + product.productId && <Hypnosis width={22} height={22} />}
+            {status === 'pendingRemoveItem' + product.productId + 'rem' && <Hypnosis width={22} height={22} />}
+            {status === 'pendingRemoveItem' + product.productId + 'del' && <Hypnosis width={22} height={22} />}
           </ActionsContainer>
         </ProductInfoContainer>
       </div>

@@ -4,7 +4,8 @@ import { LoadingContainer } from "./styles";
 export default function LoadingComponent() {
   return (
     <LoadingContainer>
-      <Hypnosis color="#3996f2" width="60px" height="60px" />
+      <Hypnosis color="#574F4D" width="60px" height="60px" />
+      <p style={{ fontFamily: 'Ubuntu', fontSize: '20px', color: '#574F4D' }}>Loading...</p>
     </LoadingContainer>
   )
 }

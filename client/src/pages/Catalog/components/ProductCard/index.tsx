@@ -5,10 +5,9 @@ import { Info, ShoppingCart } from "@phosphor-icons/react";
 import { useState } from "react";
 import { formatMoney } from "../../../../utils/formatMoney";
 import { NavLink } from "react-router-dom";
-import agent from "../../../../api/agent";
 import { Hypnosis } from "react-cssfx-loading";
-import { useAppDispatch } from "../../../../store/configureStore";
-import { setBasket } from "../../../CompleteOrder/basketSlice";
+import { useAppDispatch, useAppSelector } from "../../../../store/configureStore";
+import { addBasketItemAsync } from "../../../CompleteOrder/basketSlice";
 
 export interface Product {
   id: number;
@@ -27,8 +26,8 @@ interface ProductProps {
 }
 
 export function ProductCard({ product }: ProductProps) {
-  const [loading, setLoading] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const { status } = useAppSelector(state => state.basket);
   const dispatch = useAppDispatch();
 
   function handleIncrease() {
@@ -44,15 +43,7 @@ export function ProductCard({ product }: ProductProps) {
       ...product,
       quantity,
     };
-    handleAddItem(productToAdd.id, quantity);
-  }
-
-  function handleAddItem(productId: number, quantity: number) {
-    setLoading(true)
-    agent.Basket.addItem(productId, quantity)
-      .then(basket => dispatch(setBasket(basket)))
-      .catch(error => console.log(error))
-      .finally(() => setLoading(false))
+    dispatch(addBasketItemAsync({ productId: productToAdd.id, quantity }));
   }
 
   const formattedPrice = formatMoney(product.price);
@@ -87,7 +78,7 @@ export function ProductCard({ product }: ProductProps) {
             quantity={quantity}
           />
           <button onClick={handleAddToCart}>
-            {loading ? <Hypnosis width={20} height={20} color="#fff" /> : <ShoppingCart weight="fill" size={22} />}
+            {status === 'pendingAddItem' + product.id ? <Hypnosis width={20} height={20} color="#fff" /> : <ShoppingCart weight="fill" size={22} />}
           </button>
         </AddCartWrapper>
       </CardFooter>

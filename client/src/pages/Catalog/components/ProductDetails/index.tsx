@@ -1,36 +1,36 @@
 import { NavLink, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   ProductContent,
   ProductDetailsContainer,
   ProductDetailsInfo,
+  ProductEachDetail,
   ProductPhotoInfo,
   ProductTitle
 } from "./styles";
 import { useTheme } from "styled-components";
 import { RegularText } from "../../../../components/Typography";
-import { ShoppingCart, Package, Timer, Coffee } from "@phosphor-icons/react";
+import { CurrencyDollar, AngularLogo, Dna } from "@phosphor-icons/react";
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import { Button } from "../../../../components/Button";
-import agent from "../../../../api/agent";
-import { Product } from "../ProductCard";
 import NotFound from "../../../NotFound";
 import LoadingComponent from "../../../../components/LoadingComponent";
+import { useAppDispatch, useAppSelector } from "../../../../store/configureStore";
+import { fetchProductAsync, productSelectors } from "../../catalogSlice";
+import { IntroTitle } from "../Intro/styles";
 
 export default function ProductDetails() {
   const { colors } = useTheme();
+  const { status } = useAppSelector(state => state.catalog);
   const { id } = useParams<{ id: string }>()
-  const [product, setProduct] = useState<Product | null>(null)
-  const [loading, setLoading] = useState(true)
+  const product = useAppSelector(state => productSelectors.selectById(state, id!));
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    id && agent.Catalog.details(parseInt(id))
-      .then(response => setProduct(response))
-      .catch(error => console.log(error))
-      .finally(() => setLoading(false))
-  }, [id])
+    if (!product && id) dispatch(fetchProductAsync(parseInt(id)))
+  }, [id, dispatch, product])
 
-  if (loading) return <LoadingComponent />
+  if (status.includes('pending')) return <LoadingComponent />
 
   if (!product) return <NotFound />
 
@@ -48,26 +48,34 @@ export default function ProductDetails() {
           </section>
 
           <ProductDetailsInfo>
-            <InfoWithIcon
-              iconbg={colors["brand-yellow-dark"]}
-              icon={<ShoppingCart weight="fill" />}
-              text={`R$ ${product.price}`}
-            />
-            <InfoWithIcon
-              iconbg={colors["base-text"]}
-              icon={<Package weight="fill" />}
-              text={product.brand}
-            />
-            <InfoWithIcon
-              iconbg={colors["brand-yellow"]}
-              icon={<Timer weight="fill" />}
-              text={product.tag}
-            />
-            <InfoWithIcon
-              iconbg={colors["brand-purple"]}
-              icon={<Coffee weight="fill" />}
-              text={product.type}
-            />
+
+            <ProductEachDetail>
+              <IntroTitle size="s" >Preço</IntroTitle>
+              <InfoWithIcon
+                iconbg={colors["brand-yellow-dark"]}
+                icon={<CurrencyDollar size={24} weight="regular" />}
+                text={`R$ ${product.price}`}
+              />
+            </ProductEachDetail>
+
+            <ProductEachDetail>
+              <IntroTitle size="s" >Marca</IntroTitle>
+              <InfoWithIcon
+                iconbg={colors["brand-yellow-dark"]}
+                icon={<AngularLogo size={24} weight="regular" />}
+                text={product.brand}
+              />
+            </ProductEachDetail>
+
+            <ProductEachDetail>
+              <IntroTitle size="s" >Categoria</IntroTitle>
+              <InfoWithIcon
+                iconbg={colors["brand-yellow-dark"]}
+                icon={<Dna size={24} weight="regular" />}
+                text={product.type}
+              />
+            </ProductEachDetail>
+
           </ProductDetailsInfo>
           <div className="back-button">
             <NavLink to="/">

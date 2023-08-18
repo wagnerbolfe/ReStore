@@ -7,10 +7,10 @@ interface BenefitItemProps {
   iconbg: string;
 }
 
-export function InfoWithIcon({ icon, text, iconbg }: BenefitItemProps) {
+export function InfoWithIcon({ icon, text }: BenefitItemProps) {
   return (
     <InfoWithIconContainer>
-      <IconContainer iconbg={iconbg}>{icon}</IconContainer>
+      <IconContainer>{icon}</IconContainer>
       {typeof text === "string" ? <p>{text}</p> : text}
     </InfoWithIconContainer>
   );

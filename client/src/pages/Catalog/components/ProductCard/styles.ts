@@ -25,7 +25,7 @@ export const ProductCardContainer = styled.div`
     position: absolute;
     top: 30px;
     right: 30px;
-    color: ${({ theme }) => theme.colors["brand-purple-dark"]};
+    color: ${({ theme }) => theme.colors["base-text"]};
   }
 
 `;
