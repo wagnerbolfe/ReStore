@@ -14,6 +14,8 @@ export const ProductCardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
+
 
   img {
     width: 7.5rem;

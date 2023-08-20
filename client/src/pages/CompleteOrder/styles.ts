@@ -13,4 +13,5 @@ export const SectionBaseStyle = styled.div`
   background: ${({ theme }) => theme.colors["base-card"]};
   border-radius: 6px;
   padding: 2.5rem;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
 `;

@@ -162,7 +162,7 @@ namespace API.Data
                     Brand = "Redis",
                     Type = "Boots",
                     QuantityInStock = 100,
-                    Tag = "Sneaker"
+                    Tag = "Boots"
                 },
                 new Product
                 {
@@ -173,7 +173,7 @@ namespace API.Data
                     Brand = "NetCore",
                     Type = "Boots",
                     QuantityInStock = 100,
-                    Tag = "Sneaker"
+                    Tag = "Boots"
                 },
                 new Product
                 {
@@ -184,7 +184,7 @@ namespace API.Data
                     Brand = "NetCore",
                     Type = "Boots",
                     QuantityInStock = 100,
-                    Tag = "Sneaker"
+                    Tag = "Boots"
                 },
                 new Product
                 {
@@ -195,7 +195,7 @@ namespace API.Data
                     Brand = "Angular",
                     Type = "Boots",
                     QuantityInStock = 100,
-                    Tag = "Sneaker"
+                    Tag = "Boots"
                 },
                 new Product
                 {
@@ -206,7 +206,7 @@ namespace API.Data
                     Brand = "Angular",
                     Type = "Boots",
                     QuantityInStock = 100,
-                    Tag = "Sneaker"
+                    Tag = "Boots"
                 },
             };
 
