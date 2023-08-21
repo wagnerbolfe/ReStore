@@ -1,8 +1,9 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { Product, ProductParams } from "./components/ProductCard";
-import agent from "../../api/agent";
-import { RootState } from "../../store/configureStore";
 import { MetaData } from "../../models/pagination";
+import { RootState } from "../../store/configureStore";
+import agent from "../../api/agent";
+
 
 interface CatalogState {
   productsLoaded: boolean;
@@ -141,4 +142,5 @@ export const catalogSlice = createSlice({
 })
 
 export const productSelectors = productsAdapter.getSelectors((state: RootState) => state.catalog);
+
 export const { setProductParams, resetProductParams, setMetaData, setPageNumber } = catalogSlice.actions;

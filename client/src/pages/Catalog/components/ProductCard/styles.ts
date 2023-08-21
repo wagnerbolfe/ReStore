@@ -5,7 +5,7 @@ export const ProductCardContainer = styled.div`
   width: 100%;
   min-width: 270px;
   position: relative;
-  min-height: 350px;
+  min-height: 372px;
   background: ${({ theme }) => theme.colors["base-card"]};
   border-radius: 6px 36px 6px 36px;
   padding: 1.25rem;
