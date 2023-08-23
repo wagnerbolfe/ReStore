@@ -9,8 +9,8 @@ const DELIVERY_PRICE = 25;
 export function ConfirmationSection() {
   const { basket } = useAppSelector(state => state.basket);
   const subTotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
-  const itemCount = basket!.items.reduce((sum, item) => sum + item.quantity, 0);
-  const formattedDeliveryPrice = itemCount > 5 ? 0 : parseInt(formatMoney(DELIVERY_PRICE));
+  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
+  const formattedDeliveryPrice = itemCount! > 5 ? 0 : parseInt(formatMoney(DELIVERY_PRICE));
   const cartTotal = formattedDeliveryPrice + subTotal!;
 
   const formattedItemsTotal = formatMoney(subTotal || 0);

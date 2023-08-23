@@ -2,12 +2,14 @@ import { useLocation } from "react-router-dom";
 import { IntroTitle } from "../Catalog/components/Intro/styles";
 import { ErrorField, ErrorFieldMessage, ServerErrorContainer } from "./styles";
 import { Divider } from "@mui/material";
+import { Header } from "../../components/Header";
 
 export default function ServerError() {
   const { state } = useLocation();
 
   return (
     <>
+      <Header />
       <ServerErrorContainer>
         {state?.error ? (
 

@@ -3,9 +3,11 @@ import LogoImg from "../../assets/logo.png";
 import { Info, Key, ShoppingCart, UserPlus } from "@phosphor-icons/react";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../store/configureStore";
+import SignedInMenu from "../SignedInMenu";
 
 export function Header() {
-  const { basket } = useAppSelector(state => state.basket)
+  const { basket } = useAppSelector(state => state.basket);
+  const { user } = useAppSelector(state => state.account);
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -23,19 +25,25 @@ export function Header() {
             </HeaderButton>
           </NavLink>
 
-          <NavLink to="/login">
-            <HeaderButton $variant="purple">
-              <Key size={20} weight="fill" />
-              Login
-            </HeaderButton>
-          </NavLink>
+          {user ? (
+            <SignedInMenu />
+          ) : (
+            <>
+              <NavLink to="/login">
+                <HeaderButton $variant="purple">
+                  <Key size={20} weight="fill" />
+                  Login
+                </HeaderButton>
+              </NavLink>
 
-          <NavLink to="/register">
-            <HeaderButton $variant="purple">
-              <UserPlus size={20} weight="fill" />
-              Registrar
-            </HeaderButton>
-          </NavLink>
+              <NavLink to="/register">
+                <HeaderButton $variant="purple">
+                  <UserPlus size={20} weight="fill" />
+                  Registrar
+                </HeaderButton>
+              </NavLink>
+            </>
+          )}
 
           <NavLink to="/completeOrder">
             <HeaderButton $variant="yellow">

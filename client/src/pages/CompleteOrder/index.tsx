@@ -5,6 +5,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../../components/Header";
 
 export interface Basket {
   id: number;
@@ -65,14 +66,17 @@ export function CompleteOrderPage() {
   }
 
   return (
-    <FormProvider {...confirmOrderForm}>
-      <CompleteOrderContainer
-        className="container"
-        onSubmit={handleSubmit(handleConfirmOrder)}
-      >
-        <CompleteOrderForm />
-        <SelectedProducts />
-      </CompleteOrderContainer>
-    </FormProvider>
+    <>
+      <Header />
+      <FormProvider {...confirmOrderForm}>
+        <CompleteOrderContainer
+          className="container"
+          onSubmit={handleSubmit(handleConfirmOrder)}
+        >
+          <CompleteOrderForm />
+          <SelectedProducts />
+        </CompleteOrderContainer>
+      </FormProvider>
+    </>
   );
 }

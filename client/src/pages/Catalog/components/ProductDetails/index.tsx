@@ -18,6 +18,7 @@ import LoadingComponent from "../../../../components/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../../../store/configureStore";
 import { fetchProductAsync, productSelectors } from "../../catalogSlice";
 import { IntroTitle } from "../Intro/styles";
+import { Header } from "../../../../components/Header";
 
 export default function ProductDetails() {
   const { colors } = useTheme();
@@ -35,58 +36,61 @@ export default function ProductDetails() {
   if (!product) return <NotFound />
 
   return (
-    <ProductDetailsContainer>
-      <ProductContent className="container">
-        <div>
-          <section>
-            <ProductTitle size="xl">
-              {product.name}
-            </ProductTitle>
-            <RegularText as="h3" size="l" color="subtitle">
-              {product.description}
-            </RegularText>
-          </section>
+    <>
+      <Header />
+      <ProductDetailsContainer>
+        <ProductContent className="container">
+          <div>
+            <section>
+              <ProductTitle size="xl">
+                {product.name}
+              </ProductTitle>
+              <RegularText as="h3" size="l" color="subtitle">
+                {product.description}
+              </RegularText>
+            </section>
 
-          <ProductDetailsInfo>
+            <ProductDetailsInfo>
 
-            <ProductEachDetail>
-              <IntroTitle size="s" >Preço</IntroTitle>
-              <InfoWithIcon
-                iconbg={colors["brand-yellow-dark"]}
-                icon={<CurrencyDollar size={24} weight="regular" />}
-                text={`R$ ${product.price}`}
-              />
-            </ProductEachDetail>
+              <ProductEachDetail>
+                <IntroTitle size="s" >Preço</IntroTitle>
+                <InfoWithIcon
+                  iconbg={colors["brand-yellow-dark"]}
+                  icon={<CurrencyDollar size={24} weight="regular" />}
+                  text={`R$ ${product.price}`}
+                />
+              </ProductEachDetail>
 
-            <ProductEachDetail>
-              <IntroTitle size="s" >Marca</IntroTitle>
-              <InfoWithIcon
-                iconbg={colors["brand-yellow-dark"]}
-                icon={<AngularLogo size={24} weight="regular" />}
-                text={product.brand}
-              />
-            </ProductEachDetail>
+              <ProductEachDetail>
+                <IntroTitle size="s" >Marca</IntroTitle>
+                <InfoWithIcon
+                  iconbg={colors["brand-yellow-dark"]}
+                  icon={<AngularLogo size={24} weight="regular" />}
+                  text={product.brand}
+                />
+              </ProductEachDetail>
 
-            <ProductEachDetail>
-              <IntroTitle size="s" >Categoria</IntroTitle>
-              <InfoWithIcon
-                iconbg={colors["brand-yellow-dark"]}
-                icon={<Dna size={24} weight="regular" />}
-                text={product.type}
-              />
-            </ProductEachDetail>
+              <ProductEachDetail>
+                <IntroTitle size="s" >Categoria</IntroTitle>
+                <InfoWithIcon
+                  iconbg={colors["brand-yellow-dark"]}
+                  icon={<Dna size={24} weight="regular" />}
+                  text={product.type}
+                />
+              </ProductEachDetail>
 
-          </ProductDetailsInfo>
-          <div className="back-button">
-            <NavLink to="/">
-              <Button text="Voltar" />
-            </NavLink>
+            </ProductDetailsInfo>
+            <div className="back-button">
+              <NavLink to="/">
+                <Button text="Voltar" />
+              </NavLink>
+            </div>
           </div>
-        </div>
-        <ProductPhotoInfo className="side-b">
-          <img src={`/products/${product.pictureUrl}`} />
-        </ProductPhotoInfo>
-      </ProductContent>
-    </ProductDetailsContainer>
+          <ProductPhotoInfo className="side-b">
+            <img src={`/products/${product.pictureUrl}`} />
+          </ProductPhotoInfo>
+        </ProductContent>
+      </ProductDetailsContainer>
+    </>
   )
 }

@@ -90,6 +90,7 @@ export function ProductCard({ product }: ProductProps) {
             {status === 'pendingAddItem' + product.id ? <Hypnosis width={20} height={20} color="#fff" /> : <ShoppingCart weight="fill" size={22} />}
           </button>
         </AddCartWrapper>
+
       </CardFooter>
     </ProductCardContainer>
   );
