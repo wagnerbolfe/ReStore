@@ -13,9 +13,15 @@ export function Header() {
   return (
     <HeaderContainer>
       <div className="container">
-        <NavLink to="/">
-          <img src={LogoImg} alt="" />
-        </NavLink>
+        {user ? (
+          <NavLink to="/catalog">
+            <img src={LogoImg} alt="" />
+          </NavLink>
+        ) : (
+          <NavLink to="/">
+            <img src={LogoImg} alt="" />
+          </NavLink>
+        )}
 
         <HeaderButtonsContainer>
           <NavLink to="/about">
@@ -45,12 +51,14 @@ export function Header() {
             </>
           )}
 
-          <NavLink to="/completeOrder">
-            <HeaderButton $variant="yellow">
-              {itemCount! >= 1 && <span>{itemCount}</span>}
-              <ShoppingCart size={20} weight="fill" />
-            </HeaderButton>
-          </NavLink>
+          {itemCount! >= 1 && (
+            <NavLink to="/completeOrder">
+              <HeaderButton $variant="yellow">
+                {itemCount! >= 1 && <span>{itemCount}</span>}
+                <ShoppingCart size={20} weight="fill" />
+              </HeaderButton>
+            </NavLink>
+          )}
         </HeaderButtonsContainer>
       </div>
     </HeaderContainer >

@@ -3,18 +3,29 @@ import { RegularText } from "../../../../components/Typography";
 import { Button } from "../../../../components/Button";
 import { formatMoney } from "../../../../utils/formatMoney";
 import { useAppSelector } from "../../../../store/configureStore";
+import { useNavigate } from "react-router-dom";
 
-const DELIVERY_PRICE = 25;
+interface Props {
+  isBasket: boolean;
+  subtotal?: number;
+  orderItemCount?: number;
+}
 
-export function ConfirmationSection() {
+export function ConfirmationSection({ isBasket, subtotal, orderItemCount }: Props) {
   const { basket } = useAppSelector(state => state.basket);
-  const subTotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
-  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
-  const formattedDeliveryPrice = itemCount! > 5 ? 0 : parseInt(formatMoney(DELIVERY_PRICE));
+  const navigate = useNavigate();
+  const subTotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0) || subtotal;
+  const deliveryFee = subTotal! > 2000 ? 0 : 50;
+  const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) || orderItemCount;
+  const formattedDeliveryPrice = parseInt(formatMoney(deliveryFee));
   const cartTotal = formattedDeliveryPrice + subTotal!;
 
   const formattedItemsTotal = formatMoney(subTotal || 0);
   const formattedCartTotal = formatMoney(cartTotal || 0);
+
+  function handleCheckout() {
+    navigate('/checkout');
+  }
 
   return (
     <ConfirmationSectionContainer>
@@ -25,7 +36,7 @@ export function ConfirmationSection() {
       <div>
         <RegularText size="s">
           Entrega
-          <span style={{ fontSize: '10px', color: '#ff0000' }} >(Acima de 5un, frete grátis)</span>
+          <span style={{ fontSize: '10px', color: '#ff0000' }} >(Acima de R$ 2000, frete grátis)</span>
         </RegularText>
         <RegularText>R$ {itemCount ? formattedDeliveryPrice : 0}</RegularText>
       </div>
@@ -38,11 +49,11 @@ export function ConfirmationSection() {
         </RegularText>
       </div>
 
-      <Button
+      {!isBasket && <Button
         text="Confirmar Pedido"
         disabled={itemCount! <= 0}
-        type="submit"
-      />
+        onClick={handleCheckout}
+      />}
     </ConfirmationSectionContainer>
   );
 }

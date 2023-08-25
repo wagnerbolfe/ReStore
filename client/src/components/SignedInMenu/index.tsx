@@ -1,10 +1,11 @@
-import { Button, Fade, Menu, MenuItem } from "@mui/material";
+import { Fade, Menu, MenuItem } from "@mui/material";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/configureStore";
 import { signOut } from "../../pages/Account/accountSlice";
 import { HeaderButton } from "../Header/styles";
 import { User } from "@phosphor-icons/react";
 import { clearBasket } from "../../pages/CompleteOrder/basketSlice";
+import { Link } from "react-router-dom";
 
 export default function SignedInMenu() {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ export default function SignedInMenu() {
         TransitionComponent={Fade}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>Minhas Ordens</MenuItem>
+        <MenuItem component={Link} to='/orders'>Pedidos</MenuItem>
         <MenuItem onClick={() => {
           dispatch(signOut());
           dispatch(clearBasket());

@@ -1,7 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { CompleteOrderPage } from "../pages/CompleteOrder";
 import { HomePage } from "../pages/Catalog";
-import { OrderConfirmedPage } from "../pages/OrderConfirmed";
 import AboutPage from "../pages/AboutPage";
 import ServerError from "../pages/ServerError";
 import ProductDetails from "../pages/Catalog/components/ProductDetails";
@@ -11,6 +10,8 @@ import Login from "../pages/Account/Login";
 import Register from "../pages/Account/Register";
 import { OurProducts } from "../pages/Catalog/components/OurProducts";
 import RequireAuth from "./RequireAuth";
+import CheckoutPage from "../pages/CheckoutPage";
+import Orders from "../pages/Orders";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       {
         element: <RequireAuth />, children: [
           { path: "completeOrder", element: <CompleteOrderPage /> },
+          { path: 'orders', element: <Orders /> },
         ]
       },
       { path: "", element: <HomePage /> },
@@ -27,8 +29,8 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "catalog", element: <OurProducts /> },
+      { path: "checkout", element: <CheckoutPage /> },
       { path: "product/:id", element: <ProductDetails /> },
-      { path: "orderConfirmed", element: <OrderConfirmedPage /> },
       { path: "server-error", element: <ServerError /> },
       { path: "not-found", element: <NotFound /> },
       { path: "*", element: <Navigate replace to='/not-found' /> }

@@ -1,0 +1,19 @@
+import styled from "styled-components";
+
+export const CheckoutPageContainer = styled.div`
+  width: 50rem;
+  margin: 0 auto 2rem;
+  background: ${({ theme }) => theme.colors["base-card"]};
+  border-radius: 6px 36px 6px 36px;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
+  padding: 2rem;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .buttons {
+    margin-left: 1rem;
+    margin-top: 2rem;
+  }
+`;

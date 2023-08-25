@@ -15,10 +15,10 @@ export function SelectedProducts() {
 
       <DetailsContainer>
         {basket?.items.map((item) => (
-          <ProductCartCard key={item.productId} product={item} />
+          <ProductCartCard isBasket={false} key={item.productId} product={item} />
         ))}
 
-        <ConfirmationSection />
+        <ConfirmationSection isBasket={false} />
       </DetailsContainer>
     </SelectedProductsContainer>
   );

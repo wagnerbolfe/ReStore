@@ -16,7 +16,7 @@ namespace API.Controllers
         }
 
         [HttpGet(Name = "GetBasket")]
-        public async Task<ActionResult<BasketDto>> GetBasket()
+        public async Task<ActionResult<BasketResponse>> GetBasket()
         {
             var basket = await RetrieveBasket(GetBuyerId());
 
@@ -26,7 +26,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<BasketDto>> AddItemToBasket(int productId, int quantity)
+        public async Task<ActionResult<BasketResponse>> AddItemToBasket(int productId, int quantity)
         {
             var basket = await RetrieveBasket(GetBuyerId());
             if (basket == null) basket = CreateBasket();
