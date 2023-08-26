@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button, Alert, Chip } from "@mui/material";
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import agent from "../../api/agent";
 import { Order } from "../../models/order";
@@ -40,14 +40,14 @@ export default function Orders() {
           Pedidos
         </TitleText>
         <OrdersInfo>
-          <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Pedido</TableCell>
-                <TableCell align="center">Total</TableCell>
-                <TableCell align="center">Data Pedido</TableCell>
-                <TableCell align="center">Status</TableCell>
-                <TableCell align="center"></TableCell>
+                <TableCell align="right">Total</TableCell>
+                <TableCell align="right">Data Pedido</TableCell>
+                <TableCell align="right">Status</TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -56,15 +56,13 @@ export default function Orders() {
                   key={order.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row"><h3>{order.id}</h3></TableCell>
-                  <TableCell align="center"><h3>{formatMoney(order.total)}</h3></TableCell>
-                  <TableCell align="center">{formatDate(order.orderDate)}</TableCell>
-                  <TableCell align="center">
-                    {order.orderStatus === 'PaymentFailed' && <Chip variant="outlined" label="Problema no Pagamento" color="error" />}
-                    {order.orderStatus === 'Pending' && <Chip variant="outlined" label="Pendente" color="warning" />}
-                    {order.orderStatus === 'PaymentReceived' && <Chip variant="outlined" label="Pagamento Recebido" color="success" />}
+                  <TableCell component="th" scope="row">
+                    {order.id}
                   </TableCell>
-                  <TableCell align="center">
+                  <TableCell align="right">R$ {formatMoney(order.total)}</TableCell>
+                  <TableCell align="right">{formatDate(order.orderDate)}</TableCell>
+                  <TableCell align="right">{order.orderStatus}</TableCell>
+                  <TableCell align="right">
                     <Button onClick={() => setSelectedOrderNumber(order.id)}>
                       Detalhes
                     </Button>
