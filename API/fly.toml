@@ -1,0 +1,38 @@
+app = "wb-restore"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+primary_region = "gru"
+
+[build]
+  image = "wbolfe/restore:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  StripeSettings__PublishableKey="pk_test_51Nj3U3DKLrF4AT2cSaF2irkynbcsl3A1RKSbfMCsTo9DnC1iGXPfNErLNoQLj3pR1dIO7z6zaJ57T0NOhdi4qAqA00UMPFiWdz"
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
