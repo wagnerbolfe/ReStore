@@ -3,16 +3,17 @@ import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { ToastContainer } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
-import LoadingComponent from "./components/LoadingComponent";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { LayoutContainer } from "./layouts/DefaultLayout/styles";
-import { Header } from "./components/Header";
 import { useAppDispatch } from "./store/configureStore";
-import 'react-toastify/dist/ReactToastify.css';
 import { fetchCurrentUser } from "./pages/Account/accountSlice";
 import { fetchBasketAsync } from "./pages/CompleteOrder/basketSlice";
+import LoadingComponent from "./components/LoadingComponent";
+import 'react-toastify/dist/ReactToastify.css';
+import { HomePage } from "./pages/Catalog";
 
 function App() {
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -29,14 +30,17 @@ function App() {
     initApp().then(() => setLoading(false));
   }, [initApp])
 
-  if (loading) return <LoadingComponent />
   return (
     <ThemeProvider theme={defaultTheme}>
       <ToastContainer position="bottom-right" theme="colored" autoClose={3000} />
       <GlobalStyle />
-      <LayoutContainer>
-        <Outlet />
-      </LayoutContainer>
+      {loading ? <LoadingComponent />
+        : location.pathname === '/' ? <HomePage />
+          : <LayoutContainer>
+            <Outlet />
+          </LayoutContainer>
+      }
+
     </ThemeProvider>
   );
 }

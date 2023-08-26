@@ -75,8 +75,8 @@ export const CardFooter = styled.div`
   padding: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  justify-content: center;
+  gap: 12px;
 
   > div {
     display: flex;

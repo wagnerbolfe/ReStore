@@ -6,5 +6,6 @@ export const LayoutContainer = styled.div`
     max-width: 75rem;
     margin-right: auto;
     margin-left: auto;
+    
   }
 `;

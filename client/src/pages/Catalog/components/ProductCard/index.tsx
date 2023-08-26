@@ -74,7 +74,7 @@ export function ProductCard({ product }: ProductProps) {
 
       <CardFooter>
         <div>
-          <TitleText size="m" color="text" as="strong">
+          <TitleText size="s" color="text" as="strong">
             {formattedPrice}
           </TitleText>
         </div>

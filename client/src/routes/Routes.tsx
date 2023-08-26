@@ -1,6 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { CompleteOrderPage } from "../pages/CompleteOrder";
-import { HomePage } from "../pages/Catalog";
 import AboutPage from "../pages/AboutPage";
 import ServerError from "../pages/ServerError";
 import ProductDetails from "../pages/Catalog/components/ProductDetails";
@@ -10,7 +9,6 @@ import Login from "../pages/Account/Login";
 import Register from "../pages/Account/Register";
 import { OurProducts } from "../pages/Catalog/components/OurProducts";
 import RequireAuth from "./RequireAuth";
-import CheckoutPage from "../pages/CheckoutPage";
 import Orders from "../pages/Orders";
 import CheckoutWrapper from "../pages/CheckoutPage/components/CheckoutWrapper";
 
@@ -25,7 +23,6 @@ export const router = createBrowserRouter([
           { path: 'orders', element: <Orders /> },
         ]
       },
-      { path: "", element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },

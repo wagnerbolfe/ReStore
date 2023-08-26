@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const CarrouselContainer = styled.section`
-  width: 100%;
+  width: 75rem;
+  margin: 0 auto;
+  
 `;
 
 export const ProductList = styled.div`
