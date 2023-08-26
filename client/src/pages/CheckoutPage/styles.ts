@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CheckoutPageContainer = styled.div`
   width: 50rem;
-  margin: 0 auto 2rem;
+  margin: 2rem auto;
   background: ${({ theme }) => theme.colors["base-card"]};
   border-radius: 6px 36px 6px 36px;
   box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
