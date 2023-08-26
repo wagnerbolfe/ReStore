@@ -74,12 +74,7 @@ export function ProductCard({ product }: ProductProps) {
 
       <CardFooter>
         <div>
-<<<<<<< HEAD
           <TitleText size="s" color="text" as="strong">
-=======
-          <RegularText size="s">R$</RegularText>
-          <TitleText size="m" color="text" as="strong">
->>>>>>> parent of 1dd87f8 (Added Stripe payment system)
             {formattedPrice}
           </TitleText>
         </div>

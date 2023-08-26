@@ -10,6 +10,7 @@ import Register from "../pages/Account/Register";
 import { OurProducts } from "../pages/Catalog/components/OurProducts";
 import RequireAuth from "./RequireAuth";
 import Orders from "../pages/Orders";
+import CheckoutPage from "../pages/CheckoutPage";
 
 export const router = createBrowserRouter([
   {
