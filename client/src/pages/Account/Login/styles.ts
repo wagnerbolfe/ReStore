@@ -12,7 +12,7 @@ export const LoginContainer = styled.div`
         ${theme.colors["base-background"]} 100%
       )`};
   height: 100vh;
-  background-size: cover;
+  background-size: contain;
 
   display: flex;
   align-items: stretch;

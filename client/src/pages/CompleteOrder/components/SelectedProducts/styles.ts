@@ -2,21 +2,29 @@ import styled from "styled-components";
 import { SectionBaseStyle } from "../../styles";
 
 export const SelectedProductsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  gap: 0.75rem;
-  width: 50rem;
+  width: 75rem;
+  margin: 2rem auto;
+  background: ${({ theme }) => theme.colors["base-card"]};
+  border-radius: 6px 36px 6px 36px;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
+  padding: 2rem;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const DetailsContainer = styled(SectionBaseStyle)`
-  border-radius: 6px 44px 6px 44px;
-  display: flex;
-  flex-direction: column;
+  width: 50rem;
+  margin: 2rem auto;
+  background: ${({ theme }) => theme.colors["base-card"]};
+  border-radius: 6px 36px 6px 36px;
   box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
-  margin-top: 1rem;
+  padding: 2rem;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const ConfirmationSectionContainer = styled.section`
