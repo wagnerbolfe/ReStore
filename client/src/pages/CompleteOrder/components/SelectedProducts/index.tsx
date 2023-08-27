@@ -9,7 +9,7 @@ export function SelectedProducts() {
 
   return (
     <SelectedProductsContainer>
-      <TitleText size="xs" color="subtitle">
+      <TitleText size="m" color="subtitle">
         Produtos selecionados
       </TitleText>
 

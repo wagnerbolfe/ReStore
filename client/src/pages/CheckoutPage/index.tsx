@@ -61,7 +61,7 @@ export default function CheckoutPage() {
   const methods = useForm({
     mode: 'onTouched',
     resolver: yupResolver(currentValidationSchema)
-  });
+  })
 
   useEffect(() => {
     agent.Account.fetchAddress()
@@ -86,12 +86,12 @@ export default function CheckoutPage() {
           }
         }
       });
-      console.log(paymentResult);
+
       if (paymentResult.paymentIntent?.status === 'succeeded') {
         const orderNumber = await agent.Orders.create({ saveAddress, shippingAddress: address });
         setOrderNumber(orderNumber);
         setPaymentSucceeded(true);
-        setPaymentMessage('Obrigado! - Nós recebemos seu pagamento!');
+        setPaymentMessage('Obrigado! - sua compra está sendo processada!');
         setActiveStep(activeStep + 1);
         dispatch(clearBasket());
         setLoading(false);
@@ -106,6 +106,7 @@ export default function CheckoutPage() {
       setLoading(false);
     }
   }
+
 
   const handleNext = async (data: FieldValues) => {
     if (activeStep === steps.length - 1) {
