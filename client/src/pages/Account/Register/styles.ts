@@ -12,7 +12,7 @@ export const RegisterContainer = styled.div`
         ${theme.colors["base-background"]} 100%
       )`};
   height: 100vh;
-  background-size: contain;
+  background-size: cover;
 
   display: flex;
   align-items: stretch;

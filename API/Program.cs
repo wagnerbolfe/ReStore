@@ -55,7 +55,6 @@ else
 
     connString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
 }
-
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseNpgsql(connString);
@@ -85,7 +84,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<TokenService>();
-builder.Services.AddScoped<PaymentService>();
 
 var app = builder.Build();
 

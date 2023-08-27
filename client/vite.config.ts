@@ -7,4 +7,8 @@ export default defineConfig({
   build: {
     outDir: "../API/wwwroot"
   }
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> d9524ead35eaab0e445290bdc1534181fec12d1a

@@ -10,7 +10,11 @@ import Register from "../pages/Account/Register";
 import { OurProducts } from "../pages/Catalog/components/OurProducts";
 import RequireAuth from "./RequireAuth";
 import Orders from "../pages/Orders";
+<<<<<<< HEAD
+=======
 import CheckoutWrapper from "../pages/CheckoutPage/components/CheckoutWrapper";
+>>>>>>> teste
+import CheckoutPage from "../pages/CheckoutPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +23,7 @@ export const router = createBrowserRouter([
     children: [
       {
         element: <RequireAuth />, children: [
-          { path: "checkout", element: <CheckoutWrapper /> },
+          { path: "completeOrder", element: <CompleteOrderPage /> },
           { path: 'orders', element: <Orders /> },
         ]
       },
@@ -27,7 +31,11 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "catalog", element: <OurProducts /> },
+      { path: "checkout", element: <CheckoutPage /> },
+<<<<<<< HEAD
+=======
       { path: "completeOrder", element: <CompleteOrderPage /> },
+>>>>>>> teste
       { path: "product/:id", element: <ProductDetails /> },
       { path: "server-error", element: <ServerError /> },
       { path: "not-found", element: <NotFound /> },

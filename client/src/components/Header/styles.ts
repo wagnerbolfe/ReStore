@@ -1,9 +1,18 @@
 import styled, { css } from "styled-components";
+import introBackgroundImg from "../../assets/intro-background.png";
+import { rgba } from "polished";
 
 export const HeaderContainer = styled.header`
-  width: 75rem;
+  width: 100%;
   height: 6.5rem;
-  background: ${({ theme }) => theme.colors["base-background"]};
+  background: ${({ theme }) => `url(${introBackgroundImg}) no-repeat center,
+      linear-gradient(
+        0deg,
+        ${theme.colors["base-white"]} 0%,
+        ${rgba(theme.colors["base-background"], 0.2)} 50%,
+        ${theme.colors["base-background"]} 100%
+      )`};
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +23,7 @@ export const HeaderContainer = styled.header`
   z-index: 5;
 
   > div {
-    width: 100%;
+    width: 75rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

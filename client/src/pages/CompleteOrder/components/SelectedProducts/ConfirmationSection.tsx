@@ -16,9 +16,9 @@ export function ConfirmationSection({ isBasket, subtotal, orderItemCount }: Prop
   const navigate = useNavigate();
   const subTotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0) || subtotal;
   const deliveryFee = subTotal! > 2000 ? 0 : 50;
-  const formattedDeliveryFee = formatMoney(deliveryFee);
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) || orderItemCount;
-  const cartTotal = deliveryFee + subTotal!;
+  const formattedDeliveryPrice = parseInt(formatMoney(deliveryFee));
+  const cartTotal = formattedDeliveryPrice + subTotal!;
 
   const formattedItemsTotal = formatMoney(subTotal || 0);
   const formattedCartTotal = formatMoney(cartTotal || 0);
@@ -31,21 +31,21 @@ export function ConfirmationSection({ isBasket, subtotal, orderItemCount }: Prop
     <ConfirmationSectionContainer>
       <div>
         <RegularText size="s">Total de itens</RegularText>
-        <RegularText>{formattedItemsTotal}</RegularText>
+        <RegularText>R$ {formattedItemsTotal}</RegularText>
       </div>
       <div>
         <RegularText size="s">
           Entrega
           <span style={{ fontSize: '10px', color: '#ff0000' }} >(Acima de R$ 2000, frete grátis)</span>
         </RegularText>
-        <RegularText>{itemCount ? formattedDeliveryFee : 0}</RegularText>
+        <RegularText>R$ {itemCount ? formattedDeliveryPrice : 0}</RegularText>
       </div>
       <div>
         <RegularText $weight="700" color="subtitle" size="l">
           Total
         </RegularText>
         <RegularText $weight="700" color="subtitle" size="l">
-          {itemCount ? formattedCartTotal : 0}
+          R$ {itemCount ? formattedCartTotal : 0}
         </RegularText>
       </div>
 

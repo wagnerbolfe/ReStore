@@ -50,7 +50,7 @@ export function ProductCartCard({ product, isBasket }: ProductCartCardProps) {
         </ProductInfoContainer>
       </div>
 
-      <p>{formatMoney(product.price * product.quantity)}</p>
+      <p>R$ {formatMoney(product.price * product.quantity)}</p>
     </ProductCartCardContainer >
   );
 }
