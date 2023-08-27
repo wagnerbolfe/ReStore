@@ -483,3 +483,6 @@ API/appsettings.*.json
 
 *.db-shm
 *.db-wal
+
+*/.env
+*/.env.local
