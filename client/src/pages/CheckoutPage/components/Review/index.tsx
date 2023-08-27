@@ -9,7 +9,7 @@ export default function Review() {
   return (
     <>
       <Typography variant="h6" gutterBottom>
-        Order summary
+        Detalhes do pedido
       </Typography>
       <DetailsContainer>
         {basket?.items.map((item) => (
