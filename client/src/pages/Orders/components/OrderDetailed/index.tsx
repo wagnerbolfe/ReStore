@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Box, Button, Divider, Grid, Typography } from "@mui/material";
+import { Alert, AlertTitle, Box, Button, Divider, Grid } from "@mui/material";
 import { Order } from "../../../../models/order";
 import { BasketItem } from "../../../CompleteOrder";
 import { ProductCartCard } from "../../../CompleteOrder/components/ProductCartCard";
@@ -6,6 +6,7 @@ import { ConfirmationSection } from "../../../CompleteOrder/components/SelectedP
 import { OrdersDetailedContainer, OrdersDetailedInfo } from "./styles";
 import { Header } from "../../../../components/Header";
 import { TitleText } from "../../../../components/Typography";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
   order: Order;
@@ -13,8 +14,10 @@ interface Props {
 }
 
 export default function OrderDetailed({ order, setSelectedOrder }: Props) {
+  const navigate = useNavigate();
   const subtotal = order.orderItems.reduce((sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
   const orderItemCount = order.orderItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <>
       <Header />
@@ -38,7 +41,13 @@ export default function OrderDetailed({ order, setSelectedOrder }: Props) {
               Pagamento Recebido
             </Alert>}
 
-            <Button onClick={() => setSelectedOrder(0)} sx={{ m: 2 }} size='large' variant='contained'>Ver ordens</Button>
+            <div>
+              {order.orderStatus === 'PaymentReceived' &&
+                <a className="receipt-button" href={order.receipt} target="_blank">RECIBO</a>
+              }
+
+              <Button onClick={() => setSelectedOrder(0)} sx={{ m: 2 }} size='large' variant='contained'>Ver ordens</Button>
+            </div>
           </Box>
           <Divider variant="fullWidth" style={{ margin: '1rem 0' }} />
           {order.orderItems.map((item) => (

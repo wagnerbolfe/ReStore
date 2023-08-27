@@ -22,6 +22,7 @@ export interface Order {
   orderDate: string;
   shippingAddress: ShippingAddress;
   deliveryFee: number;
+  receipt: string;
   orderItems: OrderItem[];
   subtotal: number;
   orderStatus: string;
