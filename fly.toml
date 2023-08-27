@@ -35,4 +35,8 @@ primary_region = "gru"
     grace_period = "1s"
     interval = "15s"
     restart_limit = 0
+<<<<<<< HEAD
     timeout = "2s"
+=======
+    timeout = "2s"
+>>>>>>> teste

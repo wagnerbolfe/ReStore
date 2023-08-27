@@ -55,6 +55,10 @@ else
 
     connString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> teste
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseNpgsql(connString);
