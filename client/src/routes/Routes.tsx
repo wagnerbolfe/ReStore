@@ -11,6 +11,7 @@ import { OurProducts } from "../pages/Catalog/components/OurProducts";
 import RequireAuth from "./RequireAuth";
 import Orders from "../pages/Orders";
 import CheckoutWrapper from "../pages/CheckoutPage/components/CheckoutWrapper";
+import CheckoutPage from "../pages/CheckoutPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "catalog", element: <OurProducts /> },
+      { path: "checkout", element: <CheckoutPage /> },
       { path: "completeOrder", element: <CompleteOrderPage /> },
       { path: "product/:id", element: <ProductDetails /> },
       { path: "server-error", element: <ServerError /> },
