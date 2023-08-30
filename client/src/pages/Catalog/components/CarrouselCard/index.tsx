@@ -1,27 +1,7 @@
-import { RegularText, TitleText } from "../../../../components/Typography";
+import { TitleText } from "../../../../components/Typography";
 import { Tags, Name, Description, CardFooter, CarrouselCardContainer } from "./styles";
 import { formatMoney } from "../../../../utils/formatMoney";
-
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  pictureUrl: string;
-  type: string,
-  brand: string,
-  quantityInStock: number,
-  tag: string;
-}
-
-export interface ProductParams {
-  orderBy: string;
-  searchTerm?: string;
-  types: string[];
-  brands: string[];
-  pageNumber: number;
-  pageSize: number;
-}
+import { Product } from "../ProductCard";
 
 interface ProductProps {
   product: Product;
@@ -31,10 +11,10 @@ export function CarrouselCard({ product }: ProductProps) {
   const formattedPrice = formatMoney(product.price);
   return (
     <CarrouselCardContainer>
-      <img src={`/products/${product.pictureUrl}`} />
+      <img src={product.pictureUrl} />
 
       <Tags>
-        <span key={`${product.id}${product.tag}`}>{product.tag}</span>
+        <span key={`${product.id}${product.type}`}>{product.type}</span>
       </Tags>
 
       <Name>{product.name}</Name>

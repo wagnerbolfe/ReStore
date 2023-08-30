@@ -12,16 +12,24 @@ import RequireAuth from "./RequireAuth";
 import Orders from "../pages/Orders";
 import CheckoutPage from "../pages/CheckoutPage";
 import CheckoutWrapper from "../pages/CheckoutPage/components/CheckoutWrapper";
+import Inventory from "../pages/Admin/Inventory";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      // authenticated routes
       {
         element: <RequireAuth />, children: [
-          { path: "checkout", element: <CheckoutWrapper /> },
+          { path: 'checkout', element: <CheckoutWrapper /> },
           { path: 'orders', element: <Orders /> },
+        ]
+      },
+      // admin routes
+      {
+        element: <RequireAuth roles={['Admin']} />, children: [
+          { path: 'inventory', element: <Inventory /> },
         ]
       },
       { path: "about", element: <AboutPage /> },

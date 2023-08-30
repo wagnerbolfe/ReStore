@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import { TitleText } from "../../../../components/Typography";
 import { ProductList, OurProductsContainer, ProductFilter, ProductFilterContainer, ProductListContainer } from "./styles";
 import LoadingComponent from "../../../../components/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../../../store/configureStore";
-import { fetchFilters, fetchProductsAsync, productSelectors, setProductParams, setPageNumber } from "../../catalogSlice";
+import { setProductParams, setPageNumber } from "../../catalogSlice";
 import { ProductCard } from "../ProductCard";
 import ProductSearch from "../ProductSearch";
 import RadioButtonGroup from "../RadioButtonGroup";
@@ -11,6 +10,7 @@ import CheckboxButtons from "../CheckboxButtons";
 import AppPagination from "../AppPagination";
 import ProductCardSkeleton from "../ProductCardSkeleton";
 import { Header } from "../../../../components/Header";
+import useProducts from "../../../../hooks/useProducts";
 
 const sortOptions = [
   { value: 'name', label: 'A - Z' },
@@ -19,17 +19,9 @@ const sortOptions = [
 ]
 
 export function OurProducts() {
-  const products = useAppSelector(productSelectors.selectAll);
-  const { productsLoaded, filtersLoaded, brands, types, productParams, metaData } = useAppSelector(state => state.catalog);
+  const { products, brands, types, filtersLoaded, metaData } = useProducts();
+  const { productParams } = useAppSelector(state => state.catalog);
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (!productsLoaded) dispatch(fetchProductsAsync());
-  }, [dispatch, productsLoaded])
-
-  useEffect(() => {
-    if (!filtersLoaded) dispatch(fetchFilters());
-  }, [dispatch, filtersLoaded])
 
   if (!filtersLoaded) return <LoadingComponent />
 
@@ -76,7 +68,7 @@ export function OurProducts() {
           <ProductListContainer>
             <ProductList>
               {products.map((product) => (
-                !productsLoaded ? (<ProductCardSkeleton key={product.id} />) : (<ProductCard key={product.id} product={product} />)
+                !filtersLoaded ? (<ProductCardSkeleton key={product.id} />) : (<ProductCard key={product.id} product={product} />)
               ))}
             </ProductList>
             {metaData &&
