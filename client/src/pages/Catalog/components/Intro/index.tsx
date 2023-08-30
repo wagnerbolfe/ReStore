@@ -19,10 +19,10 @@ export function Intro() {
         <div>
           <section>
             <IntroTitle size="xl">
-              Encontre o produto perfeito para qualquer hora do dia
+              Encontre o café perfeito para qualquer hora do dia
             </IntroTitle>
             <RegularText as="h3" size="l" color="subtitle">
-              Com o Produto Delivery você recebe seu produto onde estiver, a
+              Com Coffee Shop você recebe seu café onde estiver, a
               qualquer hora
             </RegularText>
           </section>
@@ -36,17 +36,17 @@ export function Intro() {
             <InfoWithIcon
               iconbg={colors["base-text"]}
               icon={<Package size={22} weight="fill" />}
-              text="Embalagem mantém o produto intacto"
+              text="Embalagem mantém o café fresco"
             />
             <InfoWithIcon
               iconbg={colors["brand-yellow"]}
               icon={<Timer size={22} weight="fill" />}
-              text="Entrega rápida e rastreada"
+              text="Entrega rápida e confiável"
             />
             <InfoWithIcon
               iconbg={colors["brand-purple"]}
               icon={<CheckFat size={22} />}
-              text="O produto chega de acordo até você"
+              text="O café chega de acordo até você"
             />
           </BenefitsContainer>
         </div>
