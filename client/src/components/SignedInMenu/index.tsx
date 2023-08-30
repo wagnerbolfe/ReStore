@@ -35,6 +35,7 @@ export default function SignedInMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
+        {user && user.roles?.includes('Admin') && <MenuItem component={Link} to='/inventory'>Inventário</MenuItem>}
         <MenuItem component={Link} to='/orders'>Pedidos</MenuItem>
         <MenuItem onClick={() => {
           dispatch(signOut());

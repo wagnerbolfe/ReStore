@@ -18,7 +18,6 @@ export interface Product {
   type: string,
   brand: string,
   quantityInStock: number,
-  tag: string;
 }
 
 export interface ProductParams {
@@ -59,14 +58,14 @@ export function ProductCard({ product }: ProductProps) {
 
   return (
     <ProductCardContainer>
-      <img src={`/products/${product.pictureUrl}`} />
+      <img src={product.pictureUrl} />
 
       <NavLink to={`/product/${product.id}`} title="Detalhes do produto">
         <Info size={30} className="icon-card" />
       </NavLink>
 
       <Tags>
-        <span key={`${product.id}${product.tag}`}>{product.tag}</span>
+        <span key={`${product.id}${product.type}`}>{product.type}</span>
       </Tags>
 
       <Name>{product.name}</Name>

@@ -10,6 +10,8 @@ primary_region = "gru"
 [env]
   ASPNETCORE_URLS="http://+:8080"
   StripeSettings__PublishableKey="pk_test_51Nj3U3DKLrF4AT2cSaF2irkynbcsl3A1RKSbfMCsTo9DnC1iGXPfNErLNoQLj3pR1dIO7z6zaJ57T0NOhdi4qAqA00UMPFiWdz"
+  Cloudinary__CloudName="wagdev"
+  Cloudinary__ApiKey="456621588915359"
 
 [[services]]
   http_checks = []

@@ -20,7 +20,7 @@ export function ProductCartCard({ product, isBasket }: ProductCartCardProps) {
   return (
     <ProductCartCardContainer key={product.productId}>
       <div>
-        <img src={`/products/${product.pictureUrl}`} />
+        <img src={product.pictureUrl} />
         <ProductInfoContainer>
           <RegularText color="subtitle">{product.name}</RegularText>
           {!isBasket ? (
