@@ -25,6 +25,7 @@ jobs:
           push: true
           tags: wbolfe/restore:latest
   deploy:
+    needs: docker
     name: Deploy app
     runs-on: ubuntu-latest
     steps:
