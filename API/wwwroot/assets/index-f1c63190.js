@@ -331,7 +331,7 @@ Error generating stack: `+a.message+`
     justify-content: space-between;
 
     > a > img {
-      width: 40%;
+      width: 70%;
     }
   }
 `,iI=ae.div`
@@ -624,12 +624,16 @@ Error generating stack: `+a.message+`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3.5rem;
   
   .back-button {
     margin-top: 3rem;
   }
+
+  .product-details {
+    width: 500px;
+  }
 `,PW=ae.div`
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -687,7 +691,7 @@ Error generating stack: `+a.message+`
   gap: 1rem;
   margin: 0 auto;
   height: 700px;
-`;function Zs(){return h.jsxs(AW,{children:[h.jsx(Ua,{color:"#574F4D",width:"60px",height:"60px"}),h.jsx("p",{style:{fontFamily:"Ubuntu",fontSize:"20px",color:"#574F4D"},children:"Carregando..."})]})}function IW(){const{colors:e}=eC(),{status:t}=Vt(a=>a.catalog),{id:n}=uP(),r=Vt(a=>Qg.selectById(a,n)),o=Tn();return C.useEffect(()=>{!r&&n&&o(Gc(parseInt(n)))},[n,o,r]),t.includes("pending")?h.jsx(Zs,{}):r?h.jsxs(h.Fragment,{children:[h.jsx(cr,{}),h.jsx($W,{children:h.jsxs(kW,{className:"container",children:[h.jsxs("div",{children:[h.jsxs("section",{children:[h.jsx(RW,{size:"xl",children:r.name}),h.jsx(yr,{as:"h3",size:"l",color:"subtitle",children:r.description})]}),h.jsxs(OW,{children:[h.jsxs(xh,{children:[h.jsx(na,{size:"s",children:"Preço"}),h.jsx(Da,{iconbg:e["brand-yellow-dark"],icon:h.jsx(iC,{size:24,weight:"regular"}),text:`R$ ${r.price}`})]}),h.jsxs(xh,{children:[h.jsx(na,{size:"s",children:"Marca"}),h.jsx(Da,{iconbg:e["brand-yellow-dark"],icon:h.jsx(oC,{size:24,weight:"regular"}),text:r.brand})]}),h.jsxs(xh,{children:[h.jsx(na,{size:"s",children:"Categoria"}),h.jsx(Da,{iconbg:e["brand-yellow-dark"],icon:h.jsx(sC,{size:24,weight:"regular"}),text:r.type})]})]}),h.jsx("div",{className:"back-button",children:h.jsx(so,{to:"/",children:h.jsx(Lo,{text:"Voltar"})})})]}),h.jsx(PW,{className:"side-b",children:h.jsx("img",{src:`/products/${r.pictureUrl}`})})]})})]}):h.jsx(jE,{})}const _W={colors:{"base-white":"#FFFFFF","base-background":"#FAFAFA","base-card":"#F3F2F2","base-input":"#EDEDED","base-button":"#E6E5E5","base-hover":"#D7D5D5","base-label":"#8D8686","base-text":"#574F4D","base-subtitle":"#403937","base-title":"#272221","base-error":"#f84747","brand-purple-dark":"#4B2995","brand-purple":"#8047F8","brand-purple-light":"#EBE5F9","brand-yellow-dark":"#C47F17","brand-yellow":"#DBAC2C","brand-yellow-light":"#F1E9C9"},textSizes:{"title-title-xl":"3rem","title-title-l":"2rem","title-title-m":"1.5rem","title-title-s":"1.2rem","title-title-xs":"1.125rem","text-regular-l":"1.25rem","text-bold-l":"1.25rem","text-regular-m":"1rem","text-bold-m":"1rem","text-regular-s":"0.875rem","text-bold-s":"0.75rem","components-tag":"0.625rem","components-button-g":"0.875rem","components-button-s":"0.75rem"},fonts:{regular:"'Roboto'",title:"'Ubuntu'"}},FW=LR`
+`;function Zs(){return h.jsxs(AW,{children:[h.jsx(Ua,{color:"#574F4D",width:"60px",height:"60px"}),h.jsx("p",{style:{fontFamily:"Ubuntu",fontSize:"20px",color:"#574F4D"},children:"Carregando..."})]})}function IW(){const{colors:e}=eC(),{status:t}=Vt(a=>a.catalog),{id:n}=uP(),r=Vt(a=>Qg.selectById(a,n)),o=Tn();return C.useEffect(()=>{!r&&n&&o(Gc(parseInt(n)))},[n,o,r]),t.includes("pending")?h.jsx(Zs,{}):r?h.jsxs(h.Fragment,{children:[h.jsx(cr,{}),h.jsx($W,{children:h.jsxs(kW,{className:"container",children:[h.jsxs("div",{className:"product-details",children:[h.jsxs("section",{children:[h.jsx(RW,{size:"xl",children:r.name}),h.jsx(yr,{as:"h3",size:"l",color:"subtitle",children:r.description})]}),h.jsxs(OW,{children:[h.jsxs(xh,{children:[h.jsx(na,{size:"s",children:"Preço"}),h.jsx(Da,{iconbg:e["brand-yellow-dark"],icon:h.jsx(iC,{size:24,weight:"regular"}),text:`R$ ${r.price}`})]}),h.jsxs(xh,{children:[h.jsx(na,{size:"s",children:"Marca"}),h.jsx(Da,{iconbg:e["brand-yellow-dark"],icon:h.jsx(oC,{size:24,weight:"regular"}),text:r.brand})]}),h.jsxs(xh,{children:[h.jsx(na,{size:"s",children:"Categoria"}),h.jsx(Da,{iconbg:e["brand-yellow-dark"],icon:h.jsx(sC,{size:24,weight:"regular"}),text:r.type})]})]}),h.jsx("div",{className:"back-button",children:h.jsx(so,{to:"/",children:h.jsx(Lo,{text:"Voltar"})})})]}),h.jsx(PW,{className:"side-b",children:h.jsx("img",{src:r.pictureUrl})})]})})]}):h.jsx(jE,{})}const _W={colors:{"base-white":"#FFFFFF","base-background":"#FAFAFA","base-card":"#F3F2F2","base-input":"#EDEDED","base-button":"#E6E5E5","base-hover":"#D7D5D5","base-label":"#8D8686","base-text":"#574F4D","base-subtitle":"#403937","base-title":"#272221","base-error":"#f84747","brand-purple-dark":"#4B2995","brand-purple":"#8047F8","brand-purple-light":"#EBE5F9","brand-yellow-dark":"#C47F17","brand-yellow":"#DBAC2C","brand-yellow-light":"#F1E9C9"},textSizes:{"title-title-xl":"3rem","title-title-l":"2rem","title-title-m":"1.5rem","title-title-s":"1.2rem","title-title-xs":"1.125rem","text-regular-l":"1.25rem","text-bold-l":"1.25rem","text-regular-m":"1rem","text-bold-m":"1rem","text-regular-s":"0.875rem","text-bold-s":"0.75rem","components-tag":"0.625rem","components-button-g":"0.875rem","components-button-s":"0.75rem"},fonts:{regular:"'Roboto'",title:"'Ubuntu'"}},FW=LR`
   * {
     margin: 0;
     padding: 0;

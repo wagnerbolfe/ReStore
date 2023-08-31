@@ -25,7 +25,7 @@ export const HeaderContainer = styled.header`
     justify-content: space-between;
 
     > a > img {
-      width: 40%;
+      width: 70%;
     }
   }
 `;

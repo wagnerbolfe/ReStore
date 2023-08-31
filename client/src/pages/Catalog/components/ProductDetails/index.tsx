@@ -40,7 +40,7 @@ export default function ProductDetails() {
       <Header />
       <ProductDetailsContainer>
         <ProductContent className="container">
-          <div>
+          <div className="product-details">
             <section>
               <ProductTitle size="xl">
                 {product.name}
@@ -87,7 +87,7 @@ export default function ProductDetails() {
             </div>
           </div>
           <ProductPhotoInfo className="side-b">
-            <img src={`/products/${product.pictureUrl}`} />
+            <img src={product.pictureUrl} />
           </ProductPhotoInfo>
         </ProductContent>
       </ProductDetailsContainer>

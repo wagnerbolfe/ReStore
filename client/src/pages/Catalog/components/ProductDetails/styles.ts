@@ -24,14 +24,18 @@ export const ProductContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3.5rem;
   
   .back-button {
     margin-top: 3rem;
   }
+
+  .product-details {
+    width: 500px;
+  }
 `;
 
 export const ProductPhotoInfo = styled.div`
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
