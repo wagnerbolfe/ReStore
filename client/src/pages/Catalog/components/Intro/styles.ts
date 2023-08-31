@@ -15,11 +15,9 @@ export const IntroContent = styled.div`
   width: 75rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3.5rem;
 
   img {
-    width: 30%;
+    width: 40%;
   }
 `;
 
