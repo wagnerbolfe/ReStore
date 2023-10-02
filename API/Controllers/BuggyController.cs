@@ -13,7 +13,7 @@ namespace API.Controllers
         [HttpGet("bad-request")]
         public ActionResult GetBadRequest()
         {
-            return BadRequest(new ProblemDetails { Title = "This is a bad request" });
+            return BadRequest(new ProblemDetails { Title = "Erro na requisição" });
         }
 
         [HttpGet("unauthorized")]
@@ -25,15 +25,15 @@ namespace API.Controllers
         [HttpGet("validation-error")]
         public ActionResult GetValidationError()
         {
-            ModelState.AddModelError("Problem 1", "This is the first error");
-            ModelState.AddModelError("Problem 2", "This is the second error");
+            ModelState.AddModelError("Problem 1", "Primeiro erro!");
+            ModelState.AddModelError("Problem 2", "Segundo erro!");
             return ValidationProblem();
         }
 
         [HttpGet("server-error")]
         public ActionResult GetServerError()
         {
-            throw new Exception("This is a server error!");
+            throw new Exception("Erro no servidor");
         }
     }
 }
